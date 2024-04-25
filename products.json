@@ -1,0 +1,321 @@
+{
+    "0_10": {
+      "male": [
+        {
+          "id": 1,
+          "title": "Boys Casual Cotton T-Shirt",
+          "price": 15.99,
+          "description": "Comfortable and stylish cotton t-shirt for boys. Perfect for everyday wear and playtime. Available in various colors and sizes.",
+          "category": "boys' clothing",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "rating": 4.5,
+          "available": 20
+        },
+        {
+          "id": 2,
+          "title": "Boys' Printed Hoodie",
+          "price": 24.99,
+          "description": "Trendy printed hoodie for boys, made from soft and warm fabric. Ideal for chilly weather and casual outings with friends.",
+          "category": "boys' clothing",
+          "image": "https://fakestoreapi.com/img/71-7HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "rating": 4.2,
+          "available": 15
+        },
+        {
+          "id": 3,
+          "title": "Kids Denim Shorts",
+          "price": 19.99,
+          "description": "Stylish denim shorts for boys. Made with high-quality denim fabric for durability and comfort. Perfect for summer outings.",
+          "category": "boys' clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.7,
+          "available": 18
+        },
+        {
+          "id": 4,
+          "title": "Boys' Cargo Pants",
+          "price": 29.99,
+          "description": "Durable cargo pants for boys, featuring multiple pockets for storage. Made from rugged fabric for outdoor adventures.",
+          "category": "boys' clothing",
+          "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+          "rating": 4.4,
+          "available": 12
+        },
+        {
+          "id": 5,
+          "title": "Boys' Sports Shoes",
+          "price": 39.99,
+          "description": "Comfortable and supportive sports shoes for boys. Suitable for various sports activities and daily wear.",
+          "category": "boys' clothing",
+          "image": "https://fakestoreapi.com/img/81XNfqhCjlL._AC_UY879_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ],
+      "female": [
+        {
+          "id": 1,
+          "title": "Girls' Floral Dress",
+          "price": 29.99,
+          "description": "Beautiful floral dress for girls, perfect for special occasions and parties. Made with lightweight and comfortable fabric.",
+          "category": "girls' clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.6,
+          "available": 15
+        },
+        {
+          "id": 2,
+          "title": "Girls' Ballet Flats",
+          "price": 19.99,
+          "description": "Classic ballet flats for girls, featuring a soft and flexible sole for comfort. Ideal for everyday wear or dance classes.",
+          "category": "girls' clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.3,
+          "available": 20
+        },
+        {
+          "id": 3,
+          "title": "Girls' Denim Jacket",
+          "price": 34.99,
+          "description": "Stylish denim jacket for girls, featuring a cropped design and embroidered details. Perfect for layering over dresses or tops.",
+          "category": "girls' clothing",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+          "rating": 4.7,
+          "available": 10
+        },
+        {
+          "id": 4,
+          "title": "Girls' Graphic T-Shirt",
+          "price": 12.99,
+          "description": "Fun and colorful graphic t-shirt for girls. Made from soft cotton material for all-day comfort.",
+          "category": "girls' clothing",
+          "image": "https://fakestoreapi.com/img/71JkV4IxGIL._AC_UY879_.jpg",
+          "rating": 4.5,
+          "available": 30
+        },
+        {
+          "id": 5,
+          "title": "Girls' Leggings",
+          "price": 14.99,
+          "description": "Comfortable leggings for girls, perfect for everyday wear. Made with stretchy fabric for a flexible fit.",
+          "category": "girls' clothing",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ]
+    },
+    "11_20": {
+      "male": [
+        {
+          "id": 1,
+          "title": "Men's Slim Fit Jeans",
+          "price": 49.99,
+          "description": "Stylish slim fit jeans for men, featuring a modern design and comfortable fabric. Perfect for casual and semi-formal occasions.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.5,
+          "available": 15
+        },
+        {
+          "id": 2,
+          "title": "Men's Plaid Shirt",
+          "price": 29.99,
+          "description": "Classic plaid shirt for men, made from soft and breathable fabric. Ideal for casual and semi-formal occasions.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+          "rating": 4.2,
+          "available": 20
+        },
+        {
+          "id": 3,
+          "title": "Men's Hooded Sweatshirt",
+          "price": 39.99,
+          "description": "Warm and cozy hooded sweatshirt for men, featuring a drawstring hood and kangaroo pocket. Perfect for chilly days.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+          "rating": 4.7,
+          "available": 10
+        },
+        {
+          "id": 4,
+          "title": "Men's Sports Jacket",
+          "price": 59.99,
+          "description": "Versatile sports jacket for men, suitable for various outdoor activities. Made with water-resistant fabric for protection against the elements.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71JkV4IxGIL._AC_UY879_.jpg",
+          "rating": 4.4,
+          "available": 18
+        },
+        {
+          "id": 5,
+          "title": "Men's Casual Sneakers",
+          "price": 34.99,
+          "description": "Comfortable and stylish sneakers for men, perfect for everyday wear. Features a cushioned insole for all-day comfort.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ],
+      "female": [
+        {
+          "id": 1,
+          "title": "Women's Floral Maxi Dress",
+          "price": 39.99,
+          "description": "Elegant floral maxi dress for women, featuring a flowing silhouette and beautiful floral print. Perfect for special occasions.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.6,
+          "available": 15
+        },
+        {
+          "id": 2,
+          "title": "Women's Skinny Jeans",
+          "price": 29.99,
+          "description": "Classic skinny jeans for women, made from stretchy denim fabric for a comfortable and flattering fit. Perfect for everyday wear.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.3,
+          "available": 20
+        },
+        {
+          "id": 3,
+          "title": "Women's Cardigan Sweater",
+          "price": 34.99,
+          "description": "Cozy cardigan sweater for women, featuring a button-front closure and ribbed cuffs. Perfect for layering in chilly weather.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+          "rating": 4.7,
+          "available": 10
+        },
+        {
+          "id": 4,
+          "title": "Women's Graphic Tee",
+          "price": 12.99,
+          "description": "Casual and stylish graphic tee for women, made from soft cotton material. Features a unique graphic print for added flair.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/71JkV4IxGIL._AC_UY879_.jpg",
+          "rating": 4.5,
+          "available": 30
+        },
+        {
+          "id": 5,
+          "title": "Women's Slip-On Shoes",
+          "price": 24.99,
+          "description": "Comfortable slip-on shoes for women, featuring a cushioned insole and breathable upper. Perfect for casual outings.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ]
+    },
+    "above_20": {
+      "male": [
+        {
+          "id": 1,
+          "title": "Men's Slim Fit Suit",
+          "price": 99.99,
+          "description": "Classic slim fit suit for men, perfect for formal occasions and business meetings. Made with high-quality fabric for a polished look.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.6,
+          "available": 15
+        },
+        {
+          "id": 2,
+          "title": "Men's Leather Jacket",
+          "price": 79.99,
+          "description": "Stylish leather jacket for men, featuring a classic design with zippered pockets and snap button collar. Perfect for adding an edge to any outfit.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+          "rating": 4.2,
+          "available": 20
+        },
+        {
+          "id": 3,
+          "title": "Men's Dress Shirt",
+          "price": 49.99,
+          "description": "Classic dress shirt for men, made from high-quality cotton fabric. Perfect for formal events and office wear.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+          "rating": 4.7,
+          "available": 10
+        },
+        {
+          "id": 4,
+          "title": "Men's Business Pants",
+          "price": 59.99,
+          "description": "Sophisticated business pants for men, featuring a tailored fit and wrinkle-resistant fabric. Perfect for professional settings.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71JkV4IxGIL._AC_UY879_.jpg",
+          "rating": 4.4,
+          "available": 18
+        },
+        {
+          "id": 5,
+          "title": "Men's Leather Belt",
+          "price": 29.99,
+          "description": "Classic leather belt for men, featuring a timeless design and durable construction. Perfect for completing any outfit.",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ],
+      "female": [
+        {
+          "id": 1,
+          "title": "Women's Cocktail Dress",
+          "price": 69.99,
+          "description": "Stunning cocktail dress for women, featuring a figure-flattering silhouette and elegant design. Perfect for formal events and parties.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.6,
+          "available": 15
+        },
+        {
+          "id": 2,
+          "title": "Women's Ankle Boots",
+          "price": 49.99,
+          "description": "Stylish ankle boots for women, featuring a chunky heel and faux leather upper. Perfect for adding a trendy touch to any outfit.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "rating": 4.3,
+          "available": 20
+        },
+        {
+          "id": 3,
+          "title": "Women's Wool Coat",
+          "price": 89.99,
+          "description": "Luxurious wool coat for women, featuring a tailored fit and warm wool-blend fabric. Perfect for staying stylish and cozy in cold weather.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+          "rating": 4.7,
+          "available": 10
+        },
+        {
+          "id": 4,
+          "title": "Women's Statement Necklace",
+          "price": 19.99,
+          "description": "Eye-catching statement necklace for women, featuring intricate details and bold design. Perfect for adding a touch of glamour to any outfit.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/71JkV4IxGIL._AC_UY879_.jpg",
+          "rating": 4.5,
+          "available": 30
+        },
+        {
+          "id": 5,
+          "title": "Women's Leather Handbag",
+          "price": 79.99,
+          "description": "Chic leather handbag for women, featuring a timeless design and spacious interior. Perfect for everyday use or special occasions.",
+          "category": "women's clothing",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+          "rating": 4.8,
+          "available": 25
+        }
+      ]
+    }
+  }
+  
