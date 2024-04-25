@@ -7,7 +7,7 @@
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
     "rating": 5,
-    "available": 18
+    "available": 19
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
     "rating": 4,
-    "available": 20
+    "available": 16
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
     "rating": 3,
-    "available": 17
+    "available": 18
   },
   {
     "id": 4,
@@ -36,8 +36,8 @@
     "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
     "category": "men's clothing",
     "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-    "rating": 4,
-    "available": 18
+    "rating": 5,
+    "available": 17
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "category": "women's clothing",
     "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
     "rating": 3,
-    "available": 16
+    "available": 20
   },
   {
     "id": 6,
@@ -56,7 +56,7 @@
     "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
     "category": "women's clothing",
     "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
-    "rating": 3,
+    "rating": 5,
     "available": 18
   },
   {
@@ -67,7 +67,7 @@
     "category": "women's clothing",
     "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
     "rating": 5,
-    "available": 15
+    "available": 20
   },
   {
     "id": 8,
@@ -86,8 +86,8 @@
     "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
     "category": "women's clothing",
     "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
-    "rating": 3,
-    "available": 16
+    "rating": 4,
+    "available": 19
   },
   {
     "id": 10,
@@ -96,7 +96,7 @@
     "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
     "category": "women's clothing",
     "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
-    "rating": 4,
+    "rating": 3,
     "available": 19
   }
 ]

@@ -2,6 +2,7 @@ import requests
 import json
 import random
 
+file_path = "A-sko\Product_Details.json"
 def fetch_api_data(url):
     try:
         response = requests.get(url)
@@ -33,7 +34,7 @@ if data:
     
     updated_json_data = json.dumps(items, indent=2)
 
-    with open("Product_Details.json", "w") as file:
+    with open(file_path, "w") as file:
         file.write(updated_json_data)
 else:
     print("Failed to fetch API data.")
