@@ -1,33 +1,5 @@
 
 # check the code before going 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
 
 import snowflake.connector

@@ -3,7 +3,7 @@
         {
             "title": "Denim Jacket",
             "gender": "male",
-            "ID": "DJ001",
+            "ID": 1,
             "price": 49.99,
             "available": 35,
             "description": "Classic denim jacket with a modern twist. Perfect for casual outings.",
@@ -14,7 +14,7 @@
         {
             "title": "Floral Dress",
             "gender": "female",
-            "ID": "FD002",
+            "ID": 2,
             "price": 59.99,
             "available": 28,
             "description": "Elegant floral dress suitable for both formal and casual occasions.",
@@ -25,7 +25,7 @@
         {
             "title": "Polo Shirt",
             "gender": "male",
-            "ID": "PS003",
+            "ID": 3,
             "price": 29.99,
             "available": 42,
             "description": "Comfortable polo shirt made from breathable fabric. Available in multiple colors.",
@@ -36,7 +36,7 @@
         {
             "title": "Maxi Skirt",
             "gender": "female",
-            "ID": "MS004",
+            "ID": 4,
             "price": 39.99,
             "available": 30,
             "description": "Flowy maxi skirt with a bohemian vibe. Perfect for summer days.",
@@ -47,7 +47,7 @@
         {
             "title": "Hooded Sweatshirt",
             "gender": "male",
-            "ID": "HS005",
+            "ID": 5,
             "price": 34.99,
             "available": 25,
             "description": "Cozy hooded sweatshirt for chilly evenings. Features a front pocket.",
@@ -58,7 +58,7 @@
         {
             "title": "Wrap Dress",
             "gender": "female",
-            "ID": "WD006",
+            "ID": 6,
             "price": 49.99,
             "available": 37,
             "description": "Versatile wrap dress suitable for all body types. Available in various patterns.",
@@ -69,7 +69,7 @@
         {
             "title": "Chino Shorts",
             "gender": "male",
-            "ID": "CS007",
+            "ID": 7,
             "price": 24.99,
             "available": 40,
             "description": "Classic chino shorts perfect for summer outings. Features side pockets.",
@@ -80,7 +80,7 @@
         {
             "title": "Blouse",
             "gender": "female",
-            "ID": "B008",
+            "ID": 8,
             "price": 32.99,
             "available": 33,
             "description": "Stylish blouse with intricate detailing. Suitable for both work and casual wear.",
@@ -91,7 +91,7 @@
         {
             "title": "V-neck T-shirt",
             "gender": "male",
-            "ID": "VT009",
+            "ID": 9,
             "price": 19.99,
             "available": 29,
             "description": "Essential v-neck t-shirt made from soft cotton fabric. Available in multiple colors.",
@@ -102,7 +102,7 @@
         {
             "title": "Midi Dress",
             "gender": "female",
-            "ID": "MD010",
+            "ID": 10,
             "price": 44.99,
             "available": 45,
             "description": "Chic midi dress perfect for semi-formal events. Features a flattering silhouette.",
@@ -114,7 +114,7 @@
         {
             "title": "Leather Jacket",
             "gender": "male",
-            "ID": "LJ001",
+            "ID": 11,
             "price": 89.99,
             "available": 55,
             "description": "Timeless leather jacket with a rugged appeal. Perfect for adding edge to any outfit.",
@@ -125,7 +125,7 @@
         {
             "title": "Wrap Coat",
             "gender": "female",
-            "ID": "WC002",
+            "ID": 12,
             "price": 79.99,
             "available": 47,
             "description": "Elegant wrap coat with a sophisticated silhouette. Ideal for chilly evenings.",
@@ -136,7 +136,7 @@
         {
             "title": "Button-up Shirt",
             "gender": "male",
-            "ID": "BUS003",
+            "ID": 13,
             "price": 39.99,
             "available": 60,
             "description": "Classic button-up shirt made from premium cotton. Versatile and stylish.",
@@ -147,7 +147,7 @@
         {
             "title": "Shift Dress",
             "gender": "female",
-            "ID": "SD004",
+            "ID": 14,
             "price": 54.99,
             "available": 35,
             "description": "Chic shift dress with a flattering fit. Perfect for both work and play.",
@@ -158,7 +158,7 @@
         {
             "title": "Cargo Pants",
             "gender": "male",
-            "ID": "CP005",
+            "ID": 15,
             "price": 49.99,
             "available": 50,
             "description": "Sturdy cargo pants with plenty of pockets. Great for outdoor activities.",
@@ -169,7 +169,7 @@
         {
             "title": "Maxi Dress",
             "gender": "female",
-            "ID": "MD006",
+            "ID": 16,
             "price": 64.99,
             "available": 45,
             "description": "Flowy maxi dress with a bohemian vibe. Perfect for summer adventures.",
@@ -180,7 +180,7 @@
         {
             "title": "Hoodie",
             "gender": "male",
-            "ID": "H007",
+            "ID": 17,
             "price": 44.99,
             "available": 33,
             "description": "Cozy hoodie with a relaxed fit. Perfect for lounging or casual outings.",
@@ -191,7 +191,7 @@
         {
             "title": "Trench Coat",
             "gender": "female",
-            "ID": "TC008",
+            "ID": 18,
             "price": 89.99,
             "available": 60,
             "description": "Timeless trench coat with classic styling. Perfect for rainy days or layering.",
@@ -202,7 +202,7 @@
         {
             "title": "Chinos",
             "gender": "male",
-            "ID": "C009",
+            "ID": 19,
             "price": 54.99,
             "available": 40,
             "description": "Versatile chinos suitable for both casual and semi-formal occasions. Available in multiple colors.",
@@ -213,7 +213,7 @@
         {
             "title": "Blazer",
             "gender": "female",
-            "ID": "B010",
+            "ID": 20,
             "price": 69.99,
             "available": 55,
             "description": "Tailored blazer with a sleek silhouette. Perfect for adding polish to any outfit.",
@@ -224,7 +224,7 @@
         {
             "title": "T-shirt",
             "gender": "male",
-            "ID": "TS001",
+            "ID": 21,
             "price": 19.99,
             "available": 25,
             "description": "Comfortable cotton t-shirt available in various colors. Perfect for everyday wear.",
@@ -235,7 +235,7 @@
         {
             "title": "Wrap Skirt",
             "gender": "female",
-            "ID": "WS002",
+            "ID": 22,
             "price": 29.99,
             "available": 22,
             "description": "Stylish wrap skirt with a flattering silhouette. Perfect for a day out.",
@@ -246,7 +246,7 @@
         {
             "title": "Polo",
             "gender": "male",
-            "ID": "PL003",
+            "ID": 23,
             "price": 34.99,
             "available": 30,
             "description": "Classic polo shirt made from high-quality fabric. Suitable for casual and semi-formal occasions.",
@@ -257,7 +257,7 @@
         {
             "title": "Maxi Dress",
             "gender": "female",
-            "ID": "MD004",
+            "ID": 24,
             "price": 49.99,
             "available": 28,
             "description": "Flowy maxi dress with a bohemian vibe. Perfect for summer evenings.",
@@ -268,7 +268,7 @@
         {
             "title": "Denim Jeans",
             "gender": "male",
-            "ID": "DJ005",
+            "ID": 25,
             "price": 39.99,
             "available": 23,
             "description": "Classic denim jeans with a comfortable fit. Available in various washes.",
@@ -279,7 +279,7 @@
         {
             "title": "Blouse",
             "gender": "female",
-            "ID": "BL006",
+            "ID": 26,
             "price": 24.99,
             "available": 31,
             "description": "Lightweight blouse with delicate detailing. Perfect for a casual day out.",
@@ -290,7 +290,7 @@
         {
             "title": "Sweatshirt",
             "gender": "male",
-            "ID": "SS007",
+            "ID": 27,
             "price": 44.99,
             "available": 26,
             "description": "Cozy sweatshirt with a relaxed fit. Perfect for lounging at home.",
@@ -301,7 +301,7 @@
         {
             "title": "A-line Dress",
             "gender": "female",
-            "ID": "AD008",
+            "ID": 28,
             "price": 39.99,
             "available": 33,
             "description": "Flattering A-line dress suitable for various occasions. Available in vibrant colors.",
@@ -312,7 +312,7 @@
         {
             "title": "Chinos",
             "gender": "male",
-            "ID": "CH009",
+            "ID": 29,
             "price": 49.99,
             "available": 24,
             "description": "Versatile chinos with a modern slim fit. Perfect for both casual and semi-formal wear.",
@@ -323,7 +323,7 @@
         {
             "title": "Leather Jacket",
             "gender": "female",
-            "ID": "LJ010",
+            "ID": 30,
             "price": 79.99,
             "available": 29,
             "description": "Classic leather jacket with timeless style. Perfect for adding edge to any outfit.",

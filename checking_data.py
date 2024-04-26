@@ -1,53 +1,79 @@
-# This file is only for to check the code
-
 import snowflake.connector
-from flask import Flask, render_template, json
+import json
 
-app = Flask(__name__)
-
-# Snowflake connection configuration
 snowflake_config = {
     'account': 'vccevuc-sa96036',
     'user': 'keerthanjj',
     'password': 'Mypwsnow123@',
     'database': 'ESKO',
-    'schema': 'PUBLIC'
+    'schema': 'PUBLIC'  
 }
 
-# connect karo 
-connection = snowflake.connector.connect(**snowflake_config)
-print("Connected to Snowflake")
+try:
+    conn = snowflake.connector.connect(
+        user=snowflake_config['user'],
+        password=snowflake_config['password'],
+        account=snowflake_config['account'],
+        database=snowflake_config['database'],
+        schema=snowflake_config['schema']
+    )
 
-def get_products_from_snowflake():
-    """Fetch products data from Snowflake database."""
-    products_data = []
-    if connection:
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS products (
+        title VARCHAR,
+        gender VARCHAR,
+        ID VARCHAR,
+        price FLOAT,
+        available INT,
+        description VARCHAR,
+        age INT,
+        rating FLOAT,
+        image VARCHAR
+    )
+    """
+
+    conn.cursor().execute(create_table_query)
+
+    with open(r'A-sko/combines_products.json', 'r') as file:
+        data = json.load(file)
+
+    insert_query = """
+    INSERT INTO products (title, gender, ID, price, available, description, age, rating, image_url)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+
+    for item in data:
         try:
-            cursor = connection.cursor()
-            cursor.execute("SELECT * FROM PRODUCTS")
-            products_data = cursor.fetchall()
-            print("Products fetched from Snowflake")
-        except Exception as e:
-            print("Error fetching products from Snowflake:", e)
-    return products_data
+            image_url = item['image']
+        except KeyError:
+            print("Error: 'image' key is missing in an item:", item)
+            continue  # Skip this item and proceed with the next one
 
-def get_products_from_json():
-    """Load products data from JSON file."""
-    try:
-        with open(r"C:\Users\1038588\OneDrive - Blue Yonder\program files\Esko\A-sko\Product_Details.json", 'r') as file:
-            product_list = json.load(file)
-            print("Products loaded from JSON file")
-            return product_list
-    except Exception as e:
-        print("Error loading products from JSON file:", e)
-        return []
+        values = (
+            item['title'],
+            item['gender'],
+            item['ID'],
+            item['price'],
+            item['available'],
+            item['description'],
+            item['age'],
+            item['rating'],
+            image_url
+        )
+        conn.cursor().execute(insert_query, values)
 
-@app.route("/")
-def display_products():
-    """Render product data from both Snowflake and JSON file."""
-    snowflake_products = get_products_from_snowflake()
-    json_products = get_products_from_json()
-    return render_template("products.html", snowflake_products=snowflake_products, json_products=json_products)
+    conn.commit()
+    print("Data inserted successfully!")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+except snowflake.connector.Error as e:
+    print("Snowflake Error:", e)
+
+finally:
+    if 'conn' in locals() and conn is not None:
+        conn.close()
+
+
+
+
+
+
