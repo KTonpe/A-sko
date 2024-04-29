@@ -5,8 +5,11 @@ from snowflake.connector import connect  # Import for connection
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
-
+import sys
+sys.path.append(r"C:\Users\1038590\OneDrive - Blue Yonder\Desktop\Project\A-sko\ProductService")
+from products import products_api
 app = Flask(__name__)
+app.register_blueprint(products_api)
 
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SNOWFLAKE'] = SNOWFLAKE
@@ -73,7 +76,7 @@ def login():
             if check_password_hash(user.password, password):
                 login_user(user,remember=True)
                 flash("Logged",'success')
-                return redirect(url_for('product'))
+                return redirect(url_for('products_api.index'))
             else:
                flash('Invalid email or password', 'danger') 
         else:
