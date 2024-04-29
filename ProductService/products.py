@@ -74,7 +74,7 @@ def add_to_cart(title):
         if 'cart' not in session:
             session['cart'] = []
 
-        session['cart'].products_apiend(product)
+        session['cart'].append(product)
         session.modified = True
         print("Product added to cart:", product)
 
@@ -92,9 +92,9 @@ def get_cart():
 @products_api.route('/displayProducts')
 def index():
     page = request.args.get('page', default=1, type=int)
-    age_category = request.args.get('age_category')  # Retrieve age category from query parameters
+    age_category = request.args.get('age_category')
     products, total_count = get_products(age_category=age_category, page=page)
-    per_page = 10  # Number of products per page
+    per_page = 10  # Number of products per page...:)
     total_pages = (total_count + per_page - 1) // per_page
     return render_template('index.html', products=products, page=page, total_pages=total_pages)
 
@@ -110,13 +110,13 @@ def product(title):
 @products_api.route('/add_to_cart/<string:title>', methods=['POST'])
 def add_to_cart_route(title):
     add_to_cart(title)
-    return redirect(url_for('index'))
+    return redirect(url_for('products_api.index'))
 
 
 @products_api.route('/remove_from_cart/<string:title>', methods=['POST'])
 def remove_from_cart_route(title):
     remove_from_cart(title)
-    return redirect(url_for('cart'))
+    return redirect(url_for('products_api.cart'))
 
 
 @products_api.route('/cart')

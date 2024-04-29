@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="{{ url_for('products_api.static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     <h1 class="title-heading">Shopping Cart</h1>
@@ -21,7 +22,7 @@
                         <form action="/remove_from_cart/{{ item[1] }}" method="post">
                             <button type="submit" class="button">Remove from Cart</button>
                         </form>
-                        <a href="/"><button type="button" class="button">GO Back</button></a>
+                        <a href="/displayProducts"><button type="button" class="button">GO Back</button></a>
                     </div>
                     <div class="side-image">
                         <img src="{{ item[4] }}" alt="{{ item[1] }}">

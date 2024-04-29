@@ -6,8 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
-sys.path.append(r"C:\Users\1038590\OneDrive - Blue Yonder\Desktop\Project\A-sko\ProductService")
+sys.path.append(r"C:\Users\1038588\OneDrive - Blue Yonder\program files\python\A-sko-code\A-sko_clone\ProductService")
 from products import products_api
+
+
+
 app = Flask(__name__)
 app.register_blueprint(products_api)
 
@@ -16,7 +19,7 @@ app.config['SNOWFLAKE'] = SNOWFLAKE
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'  # Set login view route
+login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(email):
@@ -75,7 +78,7 @@ def login():
         if user :
             if check_password_hash(user.password, password):
                 login_user(user,remember=True)
-                flash("Logged",'success')
+                #flash("Logged",'success')
                 return redirect(url_for('products_api.index'))
             else:
                flash('Invalid email or password', 'danger') 
