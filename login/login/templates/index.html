@@ -19,7 +19,7 @@
             <div class="nav-item">
                 <a href="/orderdetails" class="order-details-link">Order Details</a>
             </div>
-            <form action="/" method="get" class="filter-form" name="age_category" id="all_option">
+            <form action="/displayProducts" method="get" class="filter-form" name="age_category" id="all_option">
                 <select name="age_category" id="age_category">
                     <option value="All">All</option>
                     <option value="below_10">Below 10</option>
@@ -33,7 +33,10 @@
                 <form action="{{ url_for('products_api.search') }}" method="get" class="form">
                     <input class="search_bar" type="text" name="query" placeholder="Search for Asko products">
                     <button type="submit">Search</button>
-                </form>
+                </form>  
+            </div>
+            <div class="logout-container">
+                <a href="/login" ><button type="button" class="btn btn-outline-primary">Logout</button></a>
             </div>
         </div>
     </nav>
