@@ -30,7 +30,7 @@
             </form>
             
             <div class="search-container">
-                <form action="{{ url_for('search') }}" method="get" class="form">
+                <form action="{{ url_for('products_api.search') }}" method="get" class="form">
                     <input class="search_bar" type="text" name="query" placeholder="Search for Asko products">
                     <button type="submit">Search</button>
                 </form>
@@ -64,15 +64,15 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item {% if page == 1 %}disabled{% endif %}">
-                <a class="page-link" href="{{ url_for('index', page=page-1) }}">Previous</a>
+                <a class="page-link" href="{{ url_for('products_api.index', page=page-1) }}">Previous</a>
             </li>
             {% for num in range(1, total_pages + 1) %}
                 <li class="page-item {% if page == num %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('index', page=num) }}">{{ num }}</a>
+                    <a class="page-link" href="{{ url_for('products_api.index', page=num) }}">{{ num }}</a>
                 </li>
             {% endfor %}
             <li class="page-item {% if page == total_pages %}disabled{% endif %}">
-                <a class="page-link" href="{{ url_for('index', page=page+1) }}">Next</a>
+                <a class="page-link" href="{{ url_for('products_api.index', page=page+1) }}">Next</a>
             </li>
         </ul>
     </nav>

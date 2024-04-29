@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for, request
+from flask import Flask, render_template, session, redirect, url_for, request, Blueprint
 import snowflake.connector
 
 snowflake_config = {
@@ -9,8 +9,8 @@ snowflake_config = {
     'schema': 'PUBLIC'
 }
 
-app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+products_api = Blueprint('products_api', __name__)
+products_api.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 def get_connection():
@@ -74,7 +74,7 @@ def add_to_cart(title):
         if 'cart' not in session:
             session['cart'] = []
 
-        session['cart'].append(product)
+        session['cart'].products_apiend(product)
         session.modified = True
         print("Product added to cart:", product)
 
@@ -89,7 +89,7 @@ def get_cart():
     return session.get('cart', [])
 
 
-@app.route('/')
+@products_api.route('/displayProducts')
 def index():
     page = request.args.get('page', default=1, type=int)
     age_category = request.args.get('age_category')  # Retrieve age category from query parameters
@@ -101,32 +101,32 @@ def index():
 
 
 
-@app.route('/product/<string:title>')
+@products_api.route('/product/<string:title>')
 def product(title):
     product = get_product_by_name(title)
     return render_template('product.html', product=product)
 
 
-@app.route('/add_to_cart/<string:title>', methods=['POST'])
+@products_api.route('/add_to_cart/<string:title>', methods=['POST'])
 def add_to_cart_route(title):
     add_to_cart(title)
     return redirect(url_for('index'))
 
 
-@app.route('/remove_from_cart/<string:title>', methods=['POST'])
+@products_api.route('/remove_from_cart/<string:title>', methods=['POST'])
 def remove_from_cart_route(title):
     remove_from_cart(title)
     return redirect(url_for('cart'))
 
 
-@app.route('/cart')
+@products_api.route('/cart')
 def cart():
     cart_contents = get_cart()
     print("Cart contents:", cart_contents)
     return render_template('cart.html', cart_contents=cart_contents)
 
 
-@app.route('/search')
+@products_api.route('/search')
 def search():
     query = request.args.get('query')
     products = get_products_by_query(query)
@@ -149,10 +149,6 @@ def get_products_by_query(query):
     return products
 
 
-@app.route('/orderdetails')
+@products_api.route('/orderdetails')
 def order_details():
     return render_template('orderdetails.html')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
