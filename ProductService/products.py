@@ -21,8 +21,6 @@ def get_connection():
         return None
 
 
-
-
 def get_products(age_category=None, page=1, per_page=10):
     products = []
     total_count = 0
@@ -50,15 +48,13 @@ def get_products(age_category=None, page=1, per_page=10):
     return products, total_count
 
 
-
-
 def get_product_by_name(title):
     product = None
     conn = get_connection()
     if conn:
         try:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM PRODUCTS WHERE title = %s", (title,))
+            cursor.execute("SELECT * FROM PUBLIC.PRODUCTS WHERE title = %s", (title,))
             product = cursor.fetchone()
         except Exception as e:
             print("An error occurred while fetching product by title:", e)
@@ -92,13 +88,11 @@ def get_cart():
 @products_api.route('/displayProducts')
 def index():
     page = request.args.get('page', default=1, type=int)
-    age_category = request.args.get('age_category')
+    age_category = request.args.get('age_category')  # Retrieve age category from query parameters
     products, total_count = get_products(age_category=age_category, page=page)
-    per_page = 10  # Number of products per page...:)
+    per_page = 10  # Number of products per page
     total_pages = (total_count + per_page - 1) // per_page
     return render_template('index.html', products=products, page=page, total_pages=total_pages)
-
-
 
 
 @products_api.route('/product/<string:title>')
@@ -110,13 +104,13 @@ def product(title):
 @products_api.route('/add_to_cart/<string:title>', methods=['POST'])
 def add_to_cart_route(title):
     add_to_cart(title)
-    return redirect(url_for('products_api.index'))
+    return redirect(url_for('.index'))
 
 
 @products_api.route('/remove_from_cart/<string:title>', methods=['POST'])
 def remove_from_cart_route(title):
     remove_from_cart(title)
-    return redirect(url_for('products_api.cart'))
+    return redirect(url_for('.cart'))
 
 
 @products_api.route('/cart')
@@ -130,7 +124,12 @@ def cart():
 def search():
     query = request.args.get('query')
     products = get_products_by_query(query)
-    return render_template('index.html', products=products)
+    page = request.args.get("page", type=int, default=1)
+    per_page = 10  # Assuming 10 products per page
+    total_count = len(products)
+    total_pages = (total_count + per_page - 1) // per_page
+    return render_template('index.html', page=page, products=products, total_pages=total_pages)
+
 
 
 def get_products_by_query(query):
@@ -139,7 +138,7 @@ def get_products_by_query(query):
     if conn:
         try:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM PRODUCTS WHERE title LIKE %s", ('%' + query + '%',))
+            cursor.execute("SELECT * FROM PUBLIC.PRODUCTS WHERE title LIKE %s", ('%' + query + '%',))
             products = cursor.fetchall()
         except Exception as e:
             print("An error occurred while fetching product data:", e)

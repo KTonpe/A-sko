@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
-sys.path.append(r"C:\Users\1038588\OneDrive - Blue Yonder\program files\python\A-sko-code\A-sko_clone\ProductService")
+sys.path.append(r"C:\Users\1038588\OneDrive - Blue Yonder\program files\checkcode\A-sko\ProductService")
 from products import products_api
 
 
