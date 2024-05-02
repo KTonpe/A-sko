@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Listing</title>
     <link rel="stylesheet" href="https://cdn4.vectorstock.com/i/1000x1000/72/73/red-letter-a-logo-vector-18697273.jpg">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -46,23 +45,24 @@
 
     <div class="product-list">
         {% if products %}
-            {% for product in products %}
-                <div class="product" onclick="window.location.href='/product/{{ product[1] }}';" style="cursor: pointer;">
-                    <div class="product-details">
-                        <h2 class="product-heading">{{ product[1] }}</h2>
-                        <p class="price">Price: ${{ product[2] }}</p>
-                        <form class="form" action="/add_to_cart/{{ product[1] }}" method="post">
-                            <button type="submit" class="button">Add Cart</button>
-                        </form>
-                    </div>
-                    <div class="side-image">
-                        <img class="" src="{{ product[4] }}" alt="{{ product[4] }}">
-                    </div>
+        {% for product in products %}
+            <div class="product" onclick="window.location.href='/product/{{ product[1] }}';" style="cursor: pointer;">
+                <div class="product-details">
+                    <h2 class="product-heading">{{ product[1] }}</h2>
+                    <p class="price">Price: ${{ product[2] }}</p>
+                    <form class="form" action="/add_to_cart/{{ product[1] }}" method="post">
+                        <button type="submit" class="button">Add Cart</button>
+                    </form>
                 </div>
-            {% endfor %}
-        {% else %}
-            <p class="empty-para">No products available.</p>
-        {% endif %}
+                <div class="side-image">
+                    <img class="" src="{{ product[4] }}" alt="{{ product[4] }}">
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty-para">No products available.</p>
+    {% endif %}
+    
     </div>
 
     <nav aria-label="Page navigation example">
@@ -80,7 +80,5 @@
             </li>
         </ul>
     </nav>
-    
-
 </body>
 </html>
