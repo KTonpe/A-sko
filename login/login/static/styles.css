@@ -33,6 +33,9 @@
 
 .price {
     font-size: 1.2rem;
+    font-family:'Segoe UI';
+    font-style:initial;
+    font-weight: 600
 }
 
 .button {
@@ -377,4 +380,23 @@ body {
     100% {
         background-position: 100% 100%;
     }
+}
+
+.para{
+    font-size: 0.8rem;
+    font-family:'Segoe UI';
+    font-style:italic;
+    font-weight: 600;
+}
+.product-heading{
+    font-size: 1.5rem;
+    font-family:'Segoe UI';
+    font-style:initial;
+    font-weight: 700  
+}
+.title-heading{
+    font-size: 1.7rem;
+    font-family:'Segoe UI';
+    font-style:initial;
+    font-weight: 600;   
 }

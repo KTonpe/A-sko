@@ -70,15 +70,42 @@ def add_to_cart(title):
         if 'cart' not in session:
             session['cart'] = []
 
-        session['cart'].append(product)
+        # Check if the product is already in the cart
+        for item in session['cart']:
+            item[9] = 1
+            if item[1] == title:
+                # If it is, increment the quantity and exit the function
+                item[9] += 1
+                session.modified = True
+                print("Product quantity increased in cart:", title)
+                return
+
+        # If the product is not in the cart, add it with a quantity of 1
+        product_with_quantity = list(product)
+        product_with_quantity.append(1)  # Quantity of the product
+        session['cart'].append(product_with_quantity)
         session.modified = True
-        print("Product added to cart:", product)
+        print("Product added to cart:", title)
+
 
 
 def remove_from_cart(title):
     if 'cart' in session:
-        session['cart'] = [item for item in session['cart'] if item[1] != title]
-        session.modified = True
+        cart = session['cart']
+        for i, item in enumerate(cart):
+            if item[1] == title:
+                if item[9] > 1:
+                    item[9] -= 1
+                else:  
+                    # If quantity is already 0 or less, remove the item from the cart
+                    del cart[i]
+                    break  # Exit the loop after removing one instance of the product
+        session['cart'] = cart  # Update the cart in the session
+        session.modified = True  # Mark the session as modified
+
+
+
+
 
 
 def get_cart():
@@ -151,3 +178,4 @@ def get_products_by_query(query):
 @products_api.route('/orderdetails')
 def order_details():
     return render_template('orderdetails.html')
+#ehen i click on the add cart button in cart bagged para increased by one based on clickings also , remove from cart clicken it should be decremented by one based on clickings and availability

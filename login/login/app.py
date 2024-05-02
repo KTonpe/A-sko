@@ -10,7 +10,6 @@ sys.path.append(r"C:\Users\1038588\OneDrive - Blue Yonder\program files\A-sko\A-
 from products import products_api
 
 
-
 app = Flask(__name__)
 app.register_blueprint(products_api)
 

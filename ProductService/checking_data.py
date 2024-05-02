@@ -219,3 +219,4 @@ def get_products_by_query(query):
 
 if __name__ == '__main__':
     app.run(debug=True)
+# this is the code that i have, in this if click add cart button twice it shouldbe increment by + 1, also if click remove from cart it should decrement by -1, do this gettitn tuple error please fix it 

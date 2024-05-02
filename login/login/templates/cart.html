@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <title class="title-heading">Shopping Cart</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
     <h1 class="title-heading">Shopping Cart</h1>
@@ -17,8 +16,9 @@
                         <h2 class="head">{{ item[1] }}</h2>
                         <p class="para">Description: {{ item[3] }}</p>
                         <p class="para">Price: ${{ item[2] }}</p>
-                        <p class="para">Rating: {{item[6]}}</p>
-                        <p class="para">Quantity Available: {{ item[7] }}</p>
+                        <p class="para">Rating: {{ item[5] }}</p>
+                        <p class="para">Quantity Available: {{ item[6] }}</p>
+                        <p class="para">Quantity in Cart: {{ item[9] }}</p>
                         <form action="/remove_from_cart/{{ item[1] }}" method="post">
                             <button type="submit" class="button">Remove from Cart</button>
                         </form>
@@ -30,10 +30,11 @@
                 </div>
             {% endfor %}
         {% else %}
-        <div class="product-order-items">
-            <img src="https://media1.tenor.com/m/rec5dlPBK2cAAAAd/mr-bean-waiting.gif"alt="cart empty" />
-            <p>MR B Wating for copy your cart items ...:)</p>
-        </div>
+            <div class="product-order-items">
+                <img src="https://media1.tenor.com/m/rec5dlPBK2cAAAAd/mr-bean-waiting.gif" alt="cart empty" />
+                <p>MR B Waiting to copy your cart items... :)</p>
+                <a href="/displayProducts"><button type="button" class="button">GO Back</button></a>
+            </div>
         {% endif %}
     </div>
 </body>
