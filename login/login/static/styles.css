@@ -264,6 +264,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    background-color: #f0f0f0;
+    background-image: url('https://img.freepik.com/premium-vector/clear-blue-sky-with-clouds-pattern-background-illustration_38782-226.jpg?w=740');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    animation: bg-animation 20s infinite alternate;
 }
 
 .cart-empty-image{
@@ -350,4 +356,25 @@
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+}
+
+
+/* bg animation */
+
+body {
+    background-color: #f0f0f0;
+    background-image: url('https://img.freepik.com/premium-vector/clear-blue-sky-with-clouds-pattern-background-illustration_38782-226.jpg?w=740');
+    background-repeat: no-repeat;
+    background-attachment: None;
+    background-size: cover;
+    animation: bg-animation 20s infinite alternate;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
