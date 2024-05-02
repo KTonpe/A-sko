@@ -72,7 +72,7 @@ def add_to_cart(title):
 
         # Check if the product is already in the cart
         for item in session['cart']:
-            item[9] = 1
+            # item[9] = 1
             if item[1] == title:
                 # If it is, increment the quantity and exit the function
                 item[9] += 1
