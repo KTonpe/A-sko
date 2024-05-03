@@ -2,6 +2,7 @@ import requests
 import json
 import random
 
+# enter the file path of the json 
 file_path = "A-sko\Product_Details.json"
 def fetch_api_data(url):
     try:
