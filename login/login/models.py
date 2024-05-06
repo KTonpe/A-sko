@@ -16,6 +16,7 @@ class User:
         return self.user_id
 
     @staticmethod
+    # first parameter gets intialized, then used here
     def create_user(username, email, ph_number, password, city):
         try:
             conn_params = get_snowflake_connection_params(current_app.config['SNOWFLAKE'])
@@ -35,6 +36,7 @@ class User:
 
     @classmethod
     def get_by_email(cls, email):
+        # cls to use "connect" to config to SNOW-FLAKE
         conn_params = get_snowflake_connection_params(current_app.config['SNOWFLAKE'])
         conn = connect(**conn_params)
         cursor = conn.cursor()
@@ -42,10 +44,11 @@ class User:
         # Cast the email parameter to a string before passing it to the query
         email = str(email)
 
-        # Use a parameterized query to avoid SQL injection and type conversion issues
+        # used string formating for query to execute
         cursor.execute("SELECT * FROM ESKO.PUBLIC.USERS WHERE email = %s", (email,))
         user = cursor.fetchone()
         conn.close()
+        # if the user exists, return a User object, otherwise return None
         return User(*user) if user else None
 
 

@@ -1,43 +1,56 @@
+# IMPORTS
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 from models import User
 from snowflake.connector import connect  # Import for connection
 from werkzeug.security import generate_password_hash, check_password_hash
-
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
 
+# CHANGE AS PER YOUR ProductService FILE PATHS
 PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038589\OneDrive - Blue Yonder\Training modules\A-sko\ProductService"
 sys.path.append(PRODUCTSERVICE_FILE_PATH)
 from products import products_api
 from getDetailsFromApiPost import add_products_api
 
+#-----------------------------------------------------------------------------------------------------------------
+
+# APP -> FLASK INTIALIZATION
 app = Flask(__name__)
+# REGISTERING THE BLUE-PRINTS FROM DIFFERENT FILE 
 app.register_blueprint(products_api)
 app.register_blueprint(add_products_api)
 
+# CONFIGURATION WITH DATABASE (SNOW-FLAKE) WITH CREDENTIALS
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SNOWFLAKE'] = SNOWFLAKE
 
+# instance if LoginManager by Flask-Login : for user Authentication  
 login_manager = LoginManager()
+
+# tells Flask-Login to work with Flask : "app"
 login_manager.init_app(app)
+
+# view function , user login without Authentication : it redirects to "login"
 login_manager.login_view = 'login'
 
+# Loader Function : call back function to reload the user obj in session -: Flask-Login
 @login_manager.user_loader
-def load_user(email):
+# takes email as a unique identifier
+def load_user(email): 
+    # User class from models.py 
     return User.get_by_email(email)
 
+#-----------------------------------------------------------------------------------------------------------------
 
+# ROUTES :
 
+# HOME API - /
 @app.route('/')
 def home():
     return render_template('welcome.html')
 
-@app.route('/product')
-def product():
-    return render_template('product.html')
-
-
+# SINGN UP API - /signup
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -48,7 +61,7 @@ def signup():
         city = request.form['city'] if 'city' in request.form else None
 
         try:
-            # Validate unique email
+            # check for exixting mail in database
             if User.get_by_email(email):
                 flash('Email address already exists. Please choose another one.', 'danger')
                 return render_template('signup.html')
@@ -56,7 +69,7 @@ def signup():
             # Hash password before storing user data
             hashed_password = generate_password_hash(password)
 
-            # Insert user data with hashed password
+            # insert data in USER table database
             if User.create_user(username, email, ph_number, hashed_password, city):
                 flash('Registration Successful!', 'success')
                 return redirect(url_for('login'))
@@ -68,29 +81,34 @@ def signup():
 
     return render_template('signup.html')
 
-
+# LOGIN API - /login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
     if request.method == 'POST':
+        # getting data from FORM login.html
         email = request.form['email']
         password = request.form['password']
 
-        user = User.get_by_email(email)  # Retrieve user by email
+        # check for existing of mail from USER TABLE
+        user = User.get_by_email(email)  
 
         if user :
+            #decrypts the pass stored in USER TABLE
             if check_password_hash(user.password, password):
                 login_user(user,remember=True)
-                #flash("Logged",'success')
+
+                # redirects to  index using the registered Blueprint 
+                # of products : products_api
                 return redirect(url_for('products_api.index'))
             else:
-               flash('Invalid email or password', 'danger') 
+               flash('Invalid password, please check again', 'danger') 
         else:
-            flash("Emdail does not exist",'danger')
+            flash("Sorry, Email does not exist",'danger')
+            # redirects to login page
+            return render_template('login.html',boolean=True)
 
-
-    return render_template('login.html',boolean=True)
-
-
+# LOGOUT API - /logout
 @app.route('/logout')
 @login_required
 def logout():
@@ -98,9 +116,6 @@ def logout():
     flash('Logged out successfully!', 'success')
     return redirect(url_for('login'))
 
-
-# You'll need to create the 'home' route and any other protected routes
-# Remember to create the signup.html and login.html templates (see below)
-
 if __name__ == '__main__':
-    app.run(debug=True)  # Run the app in debug mode
+    # Run the app in debug mode
+    app.run(debug=True)  
