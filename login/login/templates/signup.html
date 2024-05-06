@@ -61,14 +61,16 @@
 </head>
 <body>
 <div class="signup-form">
-  <h1>A_SKO Ecommerce</h1>
-  <h2>Sign Up</h2>
+  <h1>A-SKO Ecommerce</h1>
+  <h2>Sign-Up</h2>
+  <!-- action = /signup -->
+  <!--when submit to sends data to @app.route('/signup', methods=['GET', 'POST']) -->
   <form id="signupForm" action="/signup" method="post">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="number" name="ph_number" placeholder="Contact Number" required>
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="text"                            name="username"               placeholder="Username" required>
+    <input type="email"                           name="email"                  placeholder="Email Address" required>
+    <input type="number"                          name="ph_number"              placeholder="Contact Number" required>
+    <input type="password"  id="password"         name="password"               placeholder="Password" required>
+    <input type="password"  id="confirmPassword"  name="confirm_password"       placeholder="Confirm Password" required>
     <div id="passwordMismatchError" class="error-message" style="display: none;">Passwords do not match.</div>
     <!-- Dropdown menu for City -->
     <select name="city" id="cityInput" required>
@@ -83,8 +85,9 @@
   </form>
 </div>
 
+<!-- Function to check if passwords match and enable/disable signup button -->
+<!-- java script -->
 <script>
-  // Function to check if passwords match and enable/disable signup button
   function checkPasswords() {
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
@@ -101,6 +104,8 @@
   }
 
   // Add event listeners to password and confirm password fields
+  // Event-Listeners for: mouse clicks, keyboard presses, form submissions
+  // password input field in the signup form.
   document.getElementById('password').addEventListener('input', function() {
     checkPasswords();
   });
