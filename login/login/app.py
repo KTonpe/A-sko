@@ -7,13 +7,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
 
-PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038588\OneDrive - Blue Yonder\program files\A-sko\A-sko\ProductService"
+PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038589\OneDrive - Blue Yonder\Training modules\A-sko\ProductService"
 sys.path.append(PRODUCTSERVICE_FILE_PATH)
 from products import products_api
-
+from getDetailsFromApiPost import add_products_api
 
 app = Flask(__name__)
 app.register_blueprint(products_api)
+app.register_blueprint(add_products_api)
 
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SNOWFLAKE'] = SNOWFLAKE

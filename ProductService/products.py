@@ -1,26 +1,27 @@
+# IMPORTS
 from flask import Flask, render_template, session, redirect, url_for, request, Blueprint
 import snowflake.connector
+from SnowflakeCreds import snowflake_config
 
-snowflake_config = {
-    'account': 'vccevuc-sa96036',
-    'user': 'keerthanjj',
-    'password': 'Mypwsnow123@',
-    'database': 'ESKO',
-    'schema': 'PUBLIC'
-}
+#-----------------------------------------------------------------------------------------------------
 
+# BLUEPRINT TO USE IT IN LOGIN / APP
 products_api = Blueprint('products_api', __name__)
+# SECRET KEY FOR SESSION
 products_api.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+#-----------------------------------------------------------------------------------------------------
 
+# TO ESTABLISH CONNECTION PYTHON TO SNOWFLAKE
 def get_connection():
     try:
+        # ** is used to unpack the dictionary
         return snowflake.connector.connect(**snowflake_config)
     except Exception as e:
         print("An error occurred while connecting to Snowflake:", e)
         return None
 
-
+# SEARCH AND GET PRODUCTS BASED ON AGE CATEGORY
 def get_products(age_category=None, page=1, per_page=10):
     products = []
     total_count = 0
@@ -30,6 +31,7 @@ def get_products(age_category=None, page=1, per_page=10):
             cursor = conn.cursor()
             query = "SELECT * FROM ESKO.PUBLIC.PRODUCTS"
             if age_category:
+                # used string concatinate
                 if age_category == 'below_10':
                     query += " WHERE AGE < 10"
                 elif age_category == '10_to_20':
@@ -47,7 +49,7 @@ def get_products(age_category=None, page=1, per_page=10):
             conn.close()
     return products, total_count
 
-
+# SEARCH BY PRODUCT NAME
 def get_product_by_name(title):
     product = None
     conn = get_connection()
@@ -55,6 +57,7 @@ def get_product_by_name(title):
         try:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM PUBLIC.PRODUCTS WHERE title = %s", (title,))
+            # used fetchone() to get only one from the base
             product = cursor.fetchone()
         except Exception as e:
             print("An error occurred while fetching product by title:", e)
@@ -63,19 +66,19 @@ def get_product_by_name(title):
             conn.close()
     return product
 
-
+# ADD PRODUCT TO CART AND UPDATE A QUANTITY 
 def add_to_cart(title):
     product = get_product_by_name(title)
     if product:
         if 'cart' not in session:
             session['cart'] = []
 
-        # Check if the product is already in the cart
+        # check if the product is already in the cart
         for item in session['cart']:
-            # item[9] = 1
             if item[1] == title:
-                # If it is, increment the quantity and exit the function
+                # if it is, increment the quantity and exit the function
                 item[9] += 1
+                item[6] -= 1
                 session.modified = True
                 print("Product quantity increased in cart:", title)
                 return
@@ -88,77 +91,31 @@ def add_to_cart(title):
         print("Product added to cart:", title)
 
 
-
+# REMOVE A PRODUCT FROM CART AND DECREMENT THE QUANTITY IF MANY
 def remove_from_cart(title):
     if 'cart' in session:
         cart = session['cart']
+        # USED ENUMARATE TO COUNT THE DUPLICATES
         for i, item in enumerate(cart):
             if item[1] == title:
                 if item[9] > 1:
                     item[9] -= 1
+                    item[6] += 1
                 else:  
                     # If quantity is already 0 or less, remove the item from the cart
                     del cart[i]
-                    break  # Exit the loop after removing one instance of the product
-        session['cart'] = cart  # Update the cart in the session
-        session.modified = True  # Mark the session as modified
+                    # Exit the loop after removing one instance of the product
+                    break  
+        # Update the cart in the session
+        session['cart'] = cart
+        # Mark the session as modified  
+        session.modified = True  
 
-
-
-
-
-
+# START A SESSION OF CART
 def get_cart():
     return session.get('cart', [])
 
-
-@products_api.route('/displayProducts')
-def index():
-    page = request.args.get('page', default=1, type=int)
-    age_category = request.args.get('age_category')  # Retrieve age category from query parameters
-    products, total_count = get_products(age_category=age_category, page=page)
-    per_page = 10  # Number of products per page
-    total_pages = (total_count + per_page - 1) // per_page
-    return render_template('index.html', products=products, page=page, total_pages=total_pages)
-
-
-@products_api.route('/product/<string:title>')
-def product(title):
-    product = get_product_by_name(title)
-    return render_template('product.html', product=product)
-
-
-@products_api.route('/add_to_cart/<string:title>', methods=['POST'])
-def add_to_cart_route(title):
-    add_to_cart(title)
-    return redirect(url_for('.index'))
-
-
-@products_api.route('/remove_from_cart/<string:title>', methods=['POST'])
-def remove_from_cart_route(title):
-    remove_from_cart(title)
-    return redirect(url_for('.cart'))
-
-
-@products_api.route('/cart')
-def cart():
-    cart_contents = get_cart()
-    print("Cart contents:", cart_contents)
-    return render_template('cart.html', cart_contents=cart_contents)
-
-
-@products_api.route('/search')
-def search():
-    query = request.args.get('query')
-    products = get_products_by_query(query)
-    page = request.args.get("page", type=int, default=1)
-    per_page = 10  # Assuming 10 products per page
-    total_count = len(products)
-    total_pages = (total_count + per_page - 1) // per_page
-    return render_template('index.html', page=page, products=products, total_pages=total_pages)
-
-
-
+# SEARCH AND GET PRODUCTS BASED ON TITLE
 def get_products_by_query(query):
     products = []
     conn = get_connection()
@@ -174,7 +131,59 @@ def get_products_by_query(query):
             conn.close()
     return products
 
+#-----------------------------------------------------------------------------------------------------
 
+# API TO DISPLAY THE PRODUCTS - /displayProducts
+@products_api.route('/displayProducts')
+def index():
+    # check page in html - if not make page default value is 1
+    page = request.args.get('page', default=1, type=int)
+    # Retrieve age category from query parameters
+    age_category = request.args.get('age_category')  
+    products, total_count = get_products(age_category=age_category, page=page)
+    # Number of products per page
+    per_page = 10 
+    # Number of pagesrequired to display all products
+    total_pages = (total_count + per_page - 1) // per_page
+    return render_template('index.html', products=products, page=page, total_pages=total_pages)
+
+# API WHICH ACCEPTS STRING "TITLE" - /product/<string:title>
+@products_api.route('/product/<string:title>')
+def product(title):
+    product = get_product_by_name(title)
+    return render_template('product.html', product=product)
+
+#API WHICH ADDS A PRODUCT BY NAME - /add_to_cart/<string:title>
+@products_api.route('/add_to_cart/<string:title>', methods=['POST'])
+def add_to_cart_route(title):
+    add_to_cart(title)
+    return redirect(url_for('.index'))
+
+# API TO REMOVE A PRODUCT FROM CART BY NAME - /remove_from_cart/<string:title>
+@products_api.route('/remove_from_cart/<string:title>', methods=['POST'])
+def remove_from_cart_route(title):
+    remove_from_cart(title)
+    return redirect(url_for('.cart'))
+
+# API TO CART - /cart
+@products_api.route('/cart')
+def cart():
+    cart_contents = get_cart()
+    print("Cart contents:", cart_contents)
+    return render_template('cart.html', cart_contents=cart_contents)
+
+# API FOR SEARCH BAR - /search
+@products_api.route('/search')
+def search():
+    query = request.args.get('query')
+    products = get_products_by_query(query)
+    page = request.args.get("page", type=int, default=1)
+    per_page = 10  # Assuming 10 products per page
+    total_count = len(products)
+    total_pages = (total_count + per_page - 1) // per_page
+    return render_template('index.html', page=page, products=products, total_pages=total_pages)
+
+# ORDER DETAILS NEED TO BE DONE...
 @products_api.route('/orderdetails')
 def order_details():
     return render_template('orderdetails.html')
