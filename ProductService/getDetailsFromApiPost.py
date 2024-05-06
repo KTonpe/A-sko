@@ -1,9 +1,12 @@
-from flask import Flask, request, jsonify
+# IMPORTS
+from flask import Flask, request, jsonify, Blueprint
 import snowflake.connector
-import json
 
-new_adding_data_from_api = []
+#-----------------------------------------------------------------------------------------------------
+add_products_api = Blueprint('add_products_api', __name__)
 
+
+# SNOWFLAKE CREDENTIALS
 snowflake_config = {
     'account': 'vccevuc-sa96036',
     'user': 'keerthanjj',
@@ -12,10 +15,10 @@ snowflake_config = {
     'schema': 'ESKO/PUBLIC'
 }
 
-app = Flask(__name__)
+#-----------------------------------------------------------------------------------------------------
 
-
-@app.route('/aboutOfA-sko', methods=['GET'])
+# API FOR HOME - /aboutOfA-sko
+@add_products_api.route('/aboutOfA-sko', methods=['GET'])
 def home():
     info = """
                 <h1>Welcome to World of A-SKO!</h1>
@@ -23,9 +26,11 @@ def home():
             """
     return info
 
-@app.route('/post_data', methods=['POST'])
+# API FOR POSTMAN TO POST A NEW PRODUCT - /post_data
+@add_products_api.route('/post_data', methods=['POST'])
 def post_data():
     new_item = request.json
+    new_adding_data_from_api = []
     new_adding_data_from_api.append(new_item)
     try:
         connection = snowflake.connector.connect(**snowflake_config)
@@ -33,20 +38,20 @@ def post_data():
 
         for item in new_adding_data_from_api:
             print("Processing item:", item)
-            id_value = item.get('ID')  # Corrected 'ID' to 'id'
+            id_value = item.get('ID')  
             print("ID value:", id_value)
             cursor.execute("""
-            INSERT INTO PRODUCTS (ID, title, price, description, image, age, available, gender, rating)
+            INSERT INTO PRODUCTS (ID, title, price, description, image, rating, available,  age, gender)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-            (
-                item.get('ID'), item.get('title'), item.get('price'), item.get('description'), item.get('image_url'),
-                item.get('age'), item.get('available'), item.get('gender'), item.get('rating')
-            )
-                        """)
-        print("Data inserted successfully.")
+            """, (item.get('ID'), item.get('title'), item.get('price'), item.get('description'), item.get('image_url'),
+                  item.get('rating'), item.get('available'), item.get('age'), item.get('gender')))
         connection.commit()
         cursor.close()
         connection.close()
+        return "Data inserted successfully."
 
     except Exception as e:
-        print("Error:", e)
+        print("Error:", e)  # Print the actual error message for debugging
+        return "Error inserting data."
+
+
