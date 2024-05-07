@@ -104,6 +104,7 @@ def remove_from_cart(title):
                 else:  
                     # If quantity is already 0 or less, remove the item from the cart
                     del cart[i]
+<<<<<<< Updated upstream
                     # Exit the loop after removing one instance of the product
                     break  
         # Update the cart in the session
@@ -112,6 +113,12 @@ def remove_from_cart(title):
         session.modified = True  
 
 # START A SESSION OF CART
+=======
+                    break  # Exit the loop after removing one instance of the product
+        session['cart'] = cart  # Update the cart in the session
+        session.modified = True  # Mark the session as modified
+
+>>>>>>> Stashed changes
 def get_cart():
     return session.get('cart', [])
 

@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1 class="title-heading">Shopping Cart</h1>
+    <div class="cart-header">
+        <h1 class="title-heading">Shopping Cart</h1>
+        <a href="/displayProducts"><button type="button" class="button">GO Back</button></a>
+    </div>
     <div class="product-list">
+<<<<<<< Updated upstream
         <!-- contents of cart_contents from session cart:  @products_api.route('/cart') -->
+=======
+        
+>>>>>>> Stashed changes
         {% if cart_contents %}
             {% for item in cart_contents %}
                 <div class="product">
@@ -28,13 +35,19 @@
                         <form action="/remove_from_cart/{{ item[1] }}" method="post">
                             <button type="submit" class="button">Remove from Cart</button>
                         </form>
+<<<<<<< Updated upstream
                         <!-- directs to INDEX API for GO BACK button -->
                         <a href="/displayProducts"><button type="button" class="button">GO Back</button></a>
+=======
+                        
+>>>>>>> Stashed changes
                     </div>
                     <div class="side-image">
                         <img src="{{ item[4] }}" alt="{{ item[1] }}">
                     </div>
+                    
                 </div>
+                
             {% endfor %}
         {% else %}
         <!-- if empty cart -->
@@ -45,5 +58,9 @@
             </div>
         {% endif %}
     </div>
+    <div class="button-container">
+        <a href="/placeOrder"><button type="button" class="button">Place order</button></a>
+    </div>
+    
 </body>
 </html>
