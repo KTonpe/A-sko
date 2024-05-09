@@ -6,162 +6,162 @@
         <title class="title-heading">Address</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
+    <style>
+        .container {
+            background-color: rgba(255, 255, 255, 0.7); /* Transparent white */
+            padding: 20px;
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        
+        .container input[type="text"],
+        .container input[type="email"],
+        .container input[type="number"],
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .container input[type="submit"] {
+            background-color: rgb(64, 144, 235);
+            color: white;
+            cursor: pointer;
+        }
+        table, th, tb {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    width: 75%;
+        }
+        .container2 {
+            background-color: #f5f5f5; /* Pale white background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .delivery-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .delivery-table th,
+        .delivery-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .delivery-table th {
+            background-color: #f2f2f2; /* Light grey background for table header */
+        }
+
+        .select-row {
+            transform: scale(1); /* Increase the size of the checkbox */
+        }
+    </style>
     <body>
-        <style>
-            /* Style for the form container */
-            .form-container {
-                max-width: 500px;
-                margin: 0 auto;
-                padding: 20px;
-                border-radius: 8px;
-                background-color: #fff;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            }
-        
-            /* Style for form labels */
-            label {
-                display: block;
-                margin-bottom: 5px;
-                font-weight: 500;
-                color: #333;
-            }
-        
-            /* Style for form inputs */
-            input[type="text"] {
-                width: calc(100% - 12px);
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                font-size: 14px;
-            }
-        
-            /* Style for submit button */
-            input[type="submit"] {
-                width: 100%;
-                padding: 12px;
-                border: none;
-                border-radius: 4px;
-                background-color: #ff3f6c;
-                color: #fff;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-        
-            input[type="submit"]:hover {
-                background-color: #e6005c;
-            }
-            .price-details {
-                max-width: 500px;
-                margin: 20px auto;
-                padding: 20px;
-                border-radius: 8px;
-                background-color: #f9f9f9;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            }
-        
-            /* Style for table-like layout */
-            .price-details table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-        
-            .price-details th, .price-details td {
-                padding: 10px;
-                text-align: left;
-            }
-        
-            .price-details th {
-                font-weight: bold;
-                background-color: #007bff;
-                color: #fff;
-            }
-        
-            .price-details td {
-                border-top: 1px solid #ccc;
-            }
-        
-            /* Style for total amount */
-            .total-amount {
-                margin-top: 20px;
-                font-weight: bold;
-                font-size: 18px;
-            }
-        </style>
         <div style="text-align: center; margin-bottom: 20px;">
             <a href="/cart"><button type="button" class="button">GO Back</button></a>
-            <h1 class="title-heading">Add Address</h1>
-            
+            <h3 class="title-heading">Add Address</h3>
         </div>
-        <div class="form-container" id="formContainer">
-            <form action="/submitform" method="POST" id="myForm" onsubmit="return validateForm()">
-                <label for="pincode">Pincode</label>
-                <input type="text" id="pincode" name="pincode" required>
-            
-                <label for="flat_no">Flat No</label>
-                <input type="text" id="flat_no" name="flat_no" required>
-            
-                <label for="town">Town/City</label>
-                <input type="text" id="town" name="town" required>
-            
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" required>
-            
-                <label for="country">Country</label>
-                <input type="text" id="country" name="country" required>
-            
+        <div class="container">
+            <form method="post">
+                <label for="user_email">User Email:</label><br>
+                <input type="text" id="user_email" name="user_email" required><br><br>
+                <label for="phone">Mobile:</label><br>
+                <input type="text" id="phone" name="phone" required><br><br>
+                <label for="pincode">Pincode:</label><br>
+                <input type="number" id="pincode" name="pincode" required><br><br>
+                <label for="flatnumber">Flat number:</label><br>
+                <input type="text" id="flatnumber" name="flatnumber" required><br><br>
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city" required><br><br>
+                <label for="state">State:</label><br>
+                <input type="text" id="state" name="state" required><br><br>
+                <label for="country">Country:</label><br>
+                <input type="text" id="country" name="country" required><br><br>
                 <input type="submit" value="Add Address">
             </form>
         </div>
-        
-        <script>
-            function validateForm() {
-                // Add your form validation logic here if needed
-                return true; // Return true to allow form submission, false to prevent it
-            }
-        
-            document.getElementById("myForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent default form submission
-        
-                // Replace the form with other details or a new form
-                var formContainer = document.getElementById("formContainer");
-                formContainer.innerHTML = `
-                    <form id="newForm">
-                        <!-- New form fields go here -->
-                        <input type="text" name="newField" required>
-                        <input type="submit" value="Submit">
-                    </form>
-                `;
-            });
-        </script>
-        
-        <!-- Form markup -->
-        <div class="price-details">
-            <table>
+        <div class="container2">
+            <h2>Delivery to:</h2>
+            <table border="1" class="delivery-table">
                 <tr>
-                    <th>Product</th>
-                    <th>Price</th>
+                    <th>Select</th>
+                    <th>Username</th>
+                    <th>Address</th>
+                    <th>Mobile</th>
                 </tr>
+                {% for data in form_data %}
                 <tr>
-                    <td>Product 1</td>
-                    <td>$50</td>
+                    <td><input type="checkbox" class="select-row"></td>
+                    <td>{{ data.username }}</td>
+                    <td>
+                        {{ data.flatnumber }}<br>
+                        {{ data.city }}, {{ data.state }}, {{ data.country }}<br>
+                        Pincode: {{ data.pincode }}
+                    </td>
+                    <td>{{ data.phone }}</td>
                 </tr>
-                <tr>
-                    <td>Product 2</td>
-                    <td>$60</td>
-                </tr>
+                {% endfor %}
             </table>
+            <script>
+                window.onload = function() {
+                    const selectButtons = document.querySelectorAll('.select-row');
+            
+                    selectButtons.forEach(button => {
+                        button.addEventListener('change', function() {
+                            // Uncheck all other checkboxes
+                            selectButtons.forEach(otherButton => {
+                                if (otherButton !== button) {
+                                    otherButton.checked = false;
+                                }
+                            });
+            
+                            // Save selected row data if checkbox is checked
+                            if (this.checked) {
+                                // Get all cells in the row
+                                const cells = this.parentNode.parentNode.cells;
+                                const rowData = [];
+            
+                                // Iterate over cells and save text content to rowData list
+                                for (let i = 0; i < cells.length; i++) {
+                                    rowData.push(cells[i].innerText.trim());
+                                }
+            
+                                // Create a hidden form
+                                const form = document.createElement('form');
+                                form.method = 'POST';
+                                form.action = '/orderdetails'; // Specify the endpoint URL
+                
+                                // Add an input field for each data item in rowData
+                                rowData.forEach((data, index) => {
+                                    const input = document.createElement('input');
+                                    input.type = 'hidden';
+                                    input.name = `data_${index}`;
+                                    input.value = data;
+                                    form.appendChild(input);
+                                });
+            
+                                // Append the form to the document body and submit it
+                                document.body.appendChild(form);
+                                form.submit();
+                            }
+                        });
+                    });
+                };
+            </script>
+            
+            
+        </div>
         
-            <div class="total-amount">
-                Total Amount: $110 <!-- Calculate and display total amount dynamically -->
-            </div>
-        </div>
-        <div style="text-align: center;">
-            <a href="/orderdetails"><button type="button" class="button">Continue</button></a>
-        </div>
+        
         
     </body>
 </html>

@@ -7,36 +7,33 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
 
-<<<<<<< Updated upstream
 # CHANGE AS PER YOUR ProductService FILE PATHS
-PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038589\OneDrive - Blue Yonder\Training modules\A-sko\ProductService"
-=======
+
 PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\ProductService"
 ORDERSERVICE_FILE_PATH = r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\OrderService"
 
->>>>>>> Stashed changes
 sys.path.append(PRODUCTSERVICE_FILE_PATH)
 sys.path.append(ORDERSERVICE_FILE_PATH)
 from products import products_api
-<<<<<<< Updated upstream
+
 from getDetailsFromApiPost import add_products_api
 
 #-----------------------------------------------------------------------------------------------------------------
 
 # APP -> FLASK INTIALIZATION
-=======
+
 from orders import order_api
 
 __package__ = 'login.login'
->>>>>>> Stashed changes
+
 app = Flask(__name__)
 # REGISTERING THE BLUE-PRINTS FROM DIFFERENT FILE 
 app.register_blueprint(products_api)
-<<<<<<< Updated upstream
+
 app.register_blueprint(add_products_api)
-=======
+
 app.register_blueprint(order_api)
->>>>>>> Stashed changes
+
 
 # CONFIGURATION WITH DATABASE (SNOW-FLAKE) WITH CREDENTIALS
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -58,13 +55,13 @@ def load_user(email):
     # User class from models.py 
     return User.get_by_email(email)
 
-<<<<<<< Updated upstream
+
 #-----------------------------------------------------------------------------------------------------------------
 
 # ROUTES :
-=======
+
 app.config
->>>>>>> Stashed changes
+
 
 # HOME API - /
 @app.route('/')
@@ -112,7 +109,7 @@ def login():
         password = request.form['password']
 
         # check for existing of mail from USER TABLE
-        user = User.get_by_email(email)  
+        user = User.get_by_email(str(email))  
 
         if user :
             #decrypts the pass stored in USER TABLE
@@ -127,7 +124,7 @@ def login():
         else:
             flash("Sorry, Email does not exist",'danger')
             # redirects to login page
-            return render_template('login.html',boolean=True)
+    return render_template('login.html',boolean=True)
 
 # LOGOUT API - /logout
 @app.route('/logout')
@@ -140,4 +137,4 @@ def logout():
 
 if __name__ == '__main__':
     # Run the app in debug mode
-    app.run(debug=True)  
+    app.run(debug=True, port = 8080)  

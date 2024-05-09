@@ -3,13 +3,17 @@ from flask import current_app
 
 
 class User:
-    def __init__(self, user_id, username, email, ph_number, password, city=None,is_active=True):
+    def __init__(self, user_id, username, email, ph_number, password, pincode, state, flatnumber, country, city= None, is_active=True):
         self.user_id= user_id
         self.username = username
         self.email = email
         self.ph_number = ph_number
         self.password = password
         self.city = city
+        self.pincode = pincode
+        self.flatnumber = flatnumber
+        self.state = state
+        self.country = country
         self.is_active=is_active
 
     def get_id(self):
