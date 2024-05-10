@@ -36,12 +36,22 @@
                             <form action="/remove_from_cart/{{ item[1] }}" method="post">
                                 <button type="submit" class="button">Remove from Cart</button>
                             </form>
+<<<<<<< HEAD
 
                         </div>
                         <div class="side-image">
                             <img src="{{ item[4] }}" alt="{{ item[1] }}">
                         </div>
                     {% endif %}
+=======
+                            <!-- directs to INDEX API for GO BACK button -->
+                            <a href="/displayProducts"><button type="button" class="button">GO Back</button></a>
+                        </div>
+                    {% endif %}
+                    <div class="side-image">
+                        <img src="{{ item[4] }}" alt="{{ item[1] }}">
+                    </div>
+>>>>>>> ec30255 (added feature)
                 </div>
                 
             {% endfor %}

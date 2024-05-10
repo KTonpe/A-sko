@@ -7,6 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
 
+#-----------------------------------------------------------------------------------------------------------------
+
 # CHANGE AS PER YOUR ProductService FILE PATHS
 
 PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\ProductService"
