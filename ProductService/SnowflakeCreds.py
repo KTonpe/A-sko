@@ -4,4 +4,5 @@ snowflake_config = { 'account' : 'vccevuc-sa96036',
                     'password' : 'Mypwsnow123@',
                     'database' : 'ESKO',
                     'schema' : 'ESKO/PUBLIC'
+                    # 'region': 'Central India (Pune)'
 }

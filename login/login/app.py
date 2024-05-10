@@ -7,6 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
 
+#-----------------------------------------------------------------------------------------------------------------
+
 # CHANGE AS PER YOUR ProductService FILE PATHS
 PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038589\OneDrive - Blue Yonder\Training modules\A-sko\ProductService"
 sys.path.append(PRODUCTSERVICE_FILE_PATH)
@@ -106,7 +108,7 @@ def login():
         else:
             flash("Sorry, Email does not exist",'danger')
             # redirects to login page
-            return render_template('login.html',boolean=True)
+    return render_template('login.html',boolean=True)
 
 # LOGOUT API - /logout
 @app.route('/logout')
