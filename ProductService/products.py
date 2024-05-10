@@ -111,7 +111,7 @@ def remove_from_cart(title):
         # Mark the session as modified  
         session.modified = True  
 
-# START A SESSION OF CART
+
 def get_cart():
     return session.get('cart', [])
 

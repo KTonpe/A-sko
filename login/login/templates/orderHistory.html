@@ -97,19 +97,23 @@
     </style>
 </head>
 <body>
-    <h1 class="title-heading" style="text-align: center;">Orders</h1>
-    
+    <h1 style="text-align: center;">Order History</h1>
+    <div style="text-align: center;">
+        <a href="/displayProducts"><button type="button" class="button">Home</button></a>
+    </div>
     {% if cart_contents %}
     <div class="container">
         <div class="order-details">
-            <h1>Address details</h1>
-            {% for data in row_data %}
-                <p>{{ data }}</p>
-            {% endfor %}
+            {% if row_data %}
+                <h1>Address details</h1>
+                {% for data in row_data %}
+                    <p>{{ data }}</p>
+                {% endfor %}
+            {% endif %}
         </div>
 
         <div class="cart-details">
-            <h2>Cart details</h2>
+            <h1>Cart details</h1>
             {% for item in cart_contents %}
                 <div class="product-details">
                     <div class="product-image">
@@ -131,18 +135,12 @@
             <p>Total Price = {{total_amount}}</p>
         </div>
     </div>
-    <div style="text-align: center;">
-        <a href="/placeOrder"><button type="button" class="button">Go back</button></a>
-        <a href="/payments"><button type="button" class="button">Continue</button></a>
-    </div>
     {% else %}
         <div class="product-order-items">
             <img src="https://media1.tenor.com/m/l6Tx-EZfwmYAAAAC/kopadari-manishini.gif" class="cart-empty-image" alt="cart empty" />
             <p class="empty-para">Ikkada Orders undalikadhandi, dhenikandi veellu.. Basic sence undadhu... :)</p>
         </div>
-        <div style="text-align: center;">
-            <a href="/cart"><button type="button" class="button">Go back</button></a>
-        </div>
     {% endif %}
+    
 </body>
 </html>

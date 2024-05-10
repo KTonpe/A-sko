@@ -2,8 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 20px;
+    padding: 0 10px;
+    margin-top: 2%;
 }
 
 .product {
@@ -51,6 +51,10 @@
 
 .button:hover {
     background-color: #0056b3;
+}
+
+.button-container {
+    text-align: right;
 }
 
 .empty-para {
