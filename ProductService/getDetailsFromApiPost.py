@@ -1,20 +1,9 @@
 # IMPORTS
 from flask import Flask, request, jsonify, Blueprint
 import snowflake.connector
-
+from login.login.config import SNOWFLAKE
 #-----------------------------------------------------------------------------------------------------
 add_products_api = Blueprint('add_products_api', __name__)
-
-
-# SNOWFLAKE CREDENTIALS
-snowflake_config = {
-    'account': 'vccevuc-sa96036',
-    'user': 'keerthanjj',
-    'password': 'Mypwsnow123@',
-    'database': 'ESKO',
-    'schema': 'ESKO/PUBLIC'
-}
-
 #-----------------------------------------------------------------------------------------------------
 
 # API FOR HOME - /aboutOfA-sko
@@ -33,7 +22,7 @@ def post_data():
     new_adding_data_from_api = []
     new_adding_data_from_api.append(new_item)
     try:
-        connection = snowflake.connector.connect(**snowflake_config)
+        connection = snowflake.connector.connect(**SNOWFLAKE)
         cursor = connection.cursor()
 
         for item in new_adding_data_from_api:
