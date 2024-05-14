@@ -1,4 +1,4 @@
-Flask>=2.2.2  # Installs Flask version 2.2.2 or higher (recommended)
-Flask-Login==0.5.1  # Installs Flask-Login version 0.5.1 exactly
-Werkzeug>=2.3.7  # Installs Werkzeug version 2.3.7 or higher
-snowflake-connector-python~=2.7.3  # Installs snowflake-connector-python version 2.7.3 or compatible versions within a minor release range
+Flask
+Flask-Login
+Werkzeug
+snowflake-connector-python

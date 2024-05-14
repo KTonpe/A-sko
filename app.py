@@ -3,7 +3,6 @@ from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 from snowflake.connector import connect  # Import for connection
 from werkzeug.security import generate_password_hash, check_password_hash
-import sys
 #-----------------------------------------------------------------------------------------------------------------
 
 from login.login.config import SECRET_KEY,SNOWFLAKE
