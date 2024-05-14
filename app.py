@@ -1,32 +1,22 @@
 # IMPORTS
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
-from models import User
 from snowflake.connector import connect  # Import for connection
 from werkzeug.security import generate_password_hash, check_password_hash
-from config import SECRET_KEY, SNOWFLAKE  # Import configuration
 import sys
-
 #-----------------------------------------------------------------------------------------------------------------
 
-# CHANGE AS PER YOUR ProductService FILE PATHS
-
-PRODUCTSERVICE_FILE_PATH = r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\ProductService"
-ORDERSERVICE_FILE_PATH = r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\OrderService"
-
-sys.path.append(PRODUCTSERVICE_FILE_PATH)
-sys.path.append(ORDERSERVICE_FILE_PATH)
-from products import products_api
-
-from getDetailsFromApiPost import add_products_api
-
+from login.login.config import SECRET_KEY,SNOWFLAKE
+from login.login.models import User
+from ProductService.products import products_api
+from ProductService.getDetailsFromApiPost import add_products_api
+from OrderService.orders import order_api
 #-----------------------------------------------------------------------------------------------------------------
 
 # APP -> FLASK INTIALIZATION
 
-from orders import order_api
 
-__package__ = 'login.login'
+# __package__ = 'login.login'
 
 app = Flask(__name__)
 # REGISTERING THE BLUE-PRINTS FROM DIFFERENT FILE 
@@ -139,4 +129,4 @@ def logout():
 
 if __name__ == '__main__':
     # Run the app in debug mode
-    app.run(debug=True, port = 8080)  
+    app.run(debug=True)  

@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, Blueprint, request,
 import snowflake.connector
 import sys
 sys.path.append(r"C:\Users\1038585\Practise\gitApp\A-sko\A-sko\ProductService")
-from products import get_cart
+from ProductService.products import get_cart
 
 snowflake_config = {
     'account': 'vccevuc-sa96036',

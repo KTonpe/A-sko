@@ -1,7 +1,7 @@
 # IMPORTS
 from flask import Flask, render_template, session, redirect, url_for, request, Blueprint
 import snowflake.connector
-from SnowflakeCreds import snowflake_config
+from login.login.config import SNOWFLAKE
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ products_api.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def get_connection():
     try:
         # ** is used to unpack the dictionary
-        return snowflake.connector.connect(**snowflake_config)
+        return snowflake.connector.connect(**SNOWFLAKE)
     except Exception as e:
         print("An error occurred while connecting to Snowflake:", e)
         return None
